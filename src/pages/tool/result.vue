@@ -7,7 +7,7 @@
     "title01": "<span>あなたのご家庭で必要な</span>備蓄品リスト",
     "yahoo": "Yahoo!ショッピング",
     "text01": "一緒に住んでいる人の人数や性別、年齢を踏まえて、備えておくべき食料や日用品をリストアップしました。できるところから取り組みましょう！",
-    "text02": "結果をシェアする",
+    "text02": "備蓄リスト",
     "text03": "印刷する",
     "text04": "結果をご家族にシェアしたり、自分用に保存したりすることで<span>スーパーなどのお店で備蓄品を購入する際に役立てよう</span>",
     "text05": "ペットに必要な備蓄リスト",
@@ -17,7 +17,7 @@
     "text09": "必要な数量",
     "text10": "ネットで購入する",
     "text11": "大切なペットの分も、備蓄をしよう",
-    "text13": "【東京備蓄ナビ】あなたのご家庭で必要な備蓄品リスト"
+    "text13": "【備蓄ナビ】あなたのご家庭で必要な備蓄品リスト"
   },
   "en": {
     "meta": {
@@ -26,7 +26,7 @@
     "yahoo": "Yahoo! Shopping",
     "title01": "The list of suitable emergency stockpiles for your family.",
     "text01": "This list is estimated based on the genders and ages of your family.",
-    "text02": "Share the result",
+    "text02": "Stockpile list",
     "text03": "Print",
     "text04": "Share the results with your family or save them for yourself.Please use it when purchasing stockpiles at supermarkets and other stores.",
     "text05": "Stockpile list for your pets",
@@ -36,7 +36,7 @@
     "text09": "Required quantity",
     "text10": "Buy on the internet",
     "text11": "Stockpile for your precious pets",
-    "text13": "【Tokyo Stockpiling Navi】The list of suitable emergency stockpiles for your family."
+    "text13": "【Stockpiling Navi】The list of suitable emergency stockpiles for your family."
   }
 }
 </i18n>
@@ -53,13 +53,13 @@
         </div>
       </section>
     </div>
-
+    
     <section class="ToolResult">
       <div class="ToolResult__shareHeader">
         <h2 class="ToolResult__title">
           {{ $t('text02') }}
         </h2>
-
+        
         <ul class="ToolResult__shareList">
           <!-- <li>
             <a 
@@ -107,7 +107,7 @@
                 height="40"
               />
             </a>
-          </li> -->
+          </li>
 
           <li>
             <a
@@ -133,7 +133,7 @@
             </a>
           </li>
 
-          <!-- <li>
+          <li>
             <a
               href="#"
               @click="
@@ -155,7 +155,7 @@
                 height="40"
               />
             </a>
-          </li> -->
+          </li>
 
           <li>
             <a
@@ -194,21 +194,30 @@
             />
             {{ $t('text03') }}
           </li>
+          -->
+
         </ul>
       </div>
       <!-- /.ToolResult__shareHeader -->
 
       <div class="Container -m">
         <section class="ToolResult__overview">
+        <!--
           <h3
             class="ToolResult__titleSub ToolResult__lead"
             v-html="$t('text04')"
           />
+          -->
 
           <ul class="ToolResult__overviewList">
             <template
               v-for="({ item, quantity, unit }, index) in stockpileList"
             >
+              <label class="ToolResult__overviewListItem" tabindex="0">
+                <input type=checkbox :key="`stockpile${index}`">
+                  {{ item[$i18n.locale] }}： {{ quantity }} {{ unit[$i18n.locale] }}
+              </label>
+              <!--
               <li
                 :key="`stockpile${index}`"
                 class="ToolResult__overviewListItem"
@@ -217,6 +226,7 @@
                 {{ item[$i18n.locale] }}： {{ quantity }}
                 {{ unit[$i18n.locale] }}
               </li>
+              -->
             </template>
           </ul>
         </section>
@@ -303,6 +313,7 @@
                         {{ $t('text10') }}
                       </div>
                       <div class="ToolResult__listItemStoreWrap">
+                        <!--
                         <div
                           class="ToolResult__listItemStore -yahoo"
                           tabindex="0"
@@ -347,8 +358,10 @@
                         >
                           Amazon
                         </div>
+                        -->
+                        <a class="ToolResult__listItemStore -amazon" :href="`https://www.amazon.co.jp/s?k=${item.ja}&i=food-beverage&tag=bichikunavi-22`">Amazonで探す</a>
                       </div>
-
+                      <!--
                       <tool-result-modal
                         :id="id"
                         :url="url.yahoo"
@@ -360,12 +373,12 @@
                         :url="url.rakuten"
                         site-name="rakuten"
                       />
-
                       <tool-result-modal
                         :id="id"
                         :url="url.amazon"
                         site-name="amazon"
                       />
+                      -->
                     </div>
                   </template>
                 </div>
@@ -662,7 +675,7 @@ export default {
       let url = ''
 
       if (this.$i18n.locale === 'ja') {
-        message = '東京備蓄ナビで自分にあった備蓄を調べてみよう'
+        message = '備蓄ナビで自分にあった備蓄を調べてみよう'
         url = '***'
       } else {
         message = 'Find out the adequate stockpiling for you'
@@ -737,6 +750,9 @@ ${item[this.$i18n.locale]} ${quantity}${unit[this.$i18n.locale]}`
     printResult() {
       window.print()
     },
+    amazonSearchLink(s) {
+      return "https://amazon.co.jp/" + s;
+    }
   },
 }
 </script>
