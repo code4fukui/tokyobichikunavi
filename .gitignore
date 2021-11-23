@@ -89,4 +89,4 @@ sw.*
 # Vim swap files
 *.swp
 
-px.txt
+s3.secret.yml
