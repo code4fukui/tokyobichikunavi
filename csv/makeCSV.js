@@ -6,7 +6,6 @@ console.log(stockpileList);
 
 const conv = (list, imgpath, imgoffset = 0, pet = "") => {
   return list.map(s => {
-    console.log(s);
     return {
       id: s.id,
       item_ja: s.item.ja,
