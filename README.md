@@ -3,7 +3,7 @@
 ## 備蓄オープンデータ
 
 - https://code4fukui.github.io/tokyobichikunavi/csv/
-- https://code4fukui.github.io/tokyobichikunavi/csv/stockplie_list.csv
+- [CSV](csv/stockpile_list.csv.csv)
 - [convert by Deno, src](csv/makeCSV.js)
 ## オープンソース
 
