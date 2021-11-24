@@ -1,5 +1,10 @@
 # 東京備蓄ナビ
 
+## 備蓄オープンデータ
+
+- https://code4fukui.github.io/tokyobichikunavi/csv/
+- https://code4fukui.github.io/tokyobichikunavi/csv/stockplie_list.csv
+- [convert by Deno, src](csv/makeCSV.js)
 ## オープンソース
 
 - [ソースコード公開 | 東京備蓄ナビ](https://www.bichiku.metro.tokyo.lg.jp/download/)
