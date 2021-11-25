@@ -1,0 +1,20 @@
+<script type="module">
+import { bg, show } from "https://js.sabae.cc/egadv.js";
+import { CSV } from "https://js.sabae.cc/CSV.js";
+
+onload = async () => {
+    const url = "https://code4fukui.github.io/tokyobichikunavi/csv/stockpile_list.csv";
+    const csv = await CSV.fetch(url);
+    const data = CSV.toJSON(csv);
+    
+    await bg();
+    for (const d of data) {
+        const ans = await show(d.item_ja + "は、もった？", ["はい", "いいえ"]);
+        if (ans == "いいえ") {
+            await bg(d.image);
+            await show(d.description_ja);
+        }
+    }
+    await show("備えあれば患いなし！");
+}
+</script>
