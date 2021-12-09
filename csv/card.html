@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>東京備蓄ナビカード 備蓄オープンデータ</title>
+</head><bdoy>
+
+<div id="list" class=list></div>
+<div id="list2" class=list></div>
+
+<script type="module">
+import { CSV } from "https://js.sabae.cc/CSV.js";
+import { create } from "https://js.sabae.cc/stdcomp.js";
+
+onload = async () => {
+  const fn = "stockpile_list.csv";
+  const data = CSV.toJSON(await CSV.fetch(fn));
+  console.log(data);
+
+  const ncol = 3;
+
+  for (let i = 0; i < data.length % ncol; i++) {
+    data.push({ item_ja: "", description_ja: "" });
+  }
+
+  for (let i = 0; i < data.length; i += ncol) {
+    const row = create("div", list, "cardrow");
+    for (let j = 0; j < ncol; j++) {
+      const d = data[i + j];
+      const card = create("div", row, "card");
+      const card2 = create("div", card, "card-f");
+      const left = create("div", card2);
+      create("div", left, "title").textContent = d.item_ja;
+      create("div", left, "card-credit").innerHTML = "東京備蓄ナビ MIT License<br>オープンソース";
+      const img = create("img", card2);
+      if (d.image) {
+        img.src = d.image;
+      }
+    }
+  }
+  for (let i = 0; i < data.length; i += ncol) {
+    for (let j = 0; j < ncol / 2; j++) {
+      const d = data[i + ncol - 1 - j];
+      data[i + ncol - 1 - j] = data[i + j];
+      data[i + j] = d;
+    }
+  }
+  for (let i = 0; i < data.length; i += ncol) {
+    const row = create("div", list2, "cardrow");
+    for (let j = 0; j < ncol; j++) {
+      const d = data[i + j];
+      const card = create("div", row, "card");
+      const card2 = create("div", card, "card-b");
+      create("div", card2, "description").textContent = d.description_ja;
+    }
+  }
+};
+</script>
+
+<div class=credit>
+Data by <a href=https://www.bichiku.metro.tokyo.lg.jp/>東京備蓄ナビ オープンソース MIT License</a><br>
+<a href=https://github.com/code4fukui/tokyobichikunavi>src on GitHub</a>
+</div>
+
+<style>
+body {
+  margin: 2vh 3vw;
+}
+@media print {
+  body {
+    margin: 0;
+  }
+  .credit {
+    display: none;
+  }
+}
+.list {
+  page-break-after: always;
+}
+.cardrow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  break-inside: avoid;
+}
+.card {
+  display: block;
+  border: .05vw solid gray;
+  padding: 1vw;
+  x-page-break-before: avoid;
+}
+.card-f {
+  border: .3vw solid black;
+  padding: 1vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.card-b {
+  border: .3vw solid black;
+  padding: .5vw;
+}
+.card-credit {
+  font-size: .2vw;
+  position: relative;
+  bottom: 0;
+}
+.card .title {
+  font-size: 2vw;
+}
+.card .description {
+  font-size: .5vw;
+  line-height: 1.2;
+}
+.card img {
+  position: relative;
+  top: 0;
+}
+.card .description, .card img {
+  height: 16vw;
+}
+
+</style>

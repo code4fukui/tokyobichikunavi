@@ -2,7 +2,8 @@
 
 ## 備蓄オープンデータ
 
-- https://code4fukui.github.io/tokyobichikunavi/csv/
+- [備蓄ナビ](https://code4fukui.github.io/tokyobichikunavi/csv/)
+- [備蓄推奨品カード](https://code4fukui.github.io/tokyobichikunavi/csv/card.html)
 - [CSV](csv/stockpile_list.csv.csv)
 - [convert by Deno, src](csv/makeCSV.js)
 ## オープンソース
