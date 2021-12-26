@@ -1,0 +1,18 @@
+<title>備蓄品占い</title>
+<script type="module">
+import { bg, show } from "https://js.sabae.cc/egadv.js";
+import { CSV } from "https://js.sabae.cc/CSV.js";
+import { rnd } from "https://js.sabae.cc/rnd.js";
+
+onload = async () => {
+    const url = "https://code4fukui.github.io/tokyobichikunavi/csv/stockpile_list.csv";
+    const list = CSV.toJSON(await CSV.fetch(url));
+    
+    const n = list.length;
+    while (true) {
+        const x = list[rnd(n)];
+        await bg(x.image);
+        await show(x.description_ja);
+    }
+}
+</script>
