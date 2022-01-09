@@ -28,7 +28,7 @@ onload = async () => {
       const card2 = create("div", card, "card-f");
       const left = create("div", card2);
       create("div", left, "title").textContent = d.item_ja;
-      create("div", left, "card-credit").innerHTML = "東京備蓄ナビ MIT License<br>オープンソース";
+      create("div", left, "card-credit").innerHTML = d.item_ja ? "東京備蓄ナビ MIT License<br>オープンソース" : "";
       const img = create("img", card2);
       if (d.image) {
         img.src = d.image;
@@ -93,7 +93,7 @@ body {
 }
 .card-b {
   border: .3vw solid black;
-  padding: .5vw;
+  padding: 1vw;
 }
 .card-credit {
   font-size: .2vw;
