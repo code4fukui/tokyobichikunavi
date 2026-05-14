@@ -1,46 +1,61 @@
-# 東京備蓄ナビ
+# 東京備蓄ナビ (Tokyo Stockpile Navi)
 
-## 備蓄オープンデータ
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-- [備蓄ナビ](https://code4fukui.github.io/tokyobichikunavi/csv/)
-- [備蓄推奨品カード](https://code4fukui.github.io/tokyobichikunavi/csv/card.html)
-- [CSV](csv/stockpile_list.csv.csv)
-- [convert by Deno, src](csv/makeCSV.js)
-## オープンソース
+An interactive web application to help you calculate your family's emergency stockpile needs, based on the official "Tokyo Stockpile Navi" by the Tokyo Metropolitan Government.
 
-- [ソースコード公開 | 東京備蓄ナビ](https://www.bichiku.metro.tokyo.lg.jp/download/)
+## Demos
 
-## ライセンス
-本ソフトウェアは、MITライセンスのもと提供されています。
+- **Main Application:** [https://code4fukui.github.io/tokyobichikunavi/](https://code4fukui.github.io/tokyobichikunavi/)
+- **Data View (備蓄ナビ):** [https://code4fukui.github.io/tokyobichikunavi/csv/](https://code4fukui.github.io/tokyobichikunavi/csv/)
+- **Data Cards (備蓄推奨品カード):** [https://code4fukui.github.io/tokyobichikunavi/csv/card.html](https://code4fukui.github.io/tokyobichikunavi/csv/card.html)
 
-#### MIT License
-Copyright (c) 2021 Tokyo Metropolitan Government and other contributors.  
+## Features
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without  restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  
+- **Interactive Calculator:** A step-by-step tool to determine personalized stockpile recommendations based on family size, age, and gender.
+- **Multilingual Support:** Full Japanese and English language support (i18n).
+- **Static Site Generation:** Built with Nuxt.js for fast, static deployment.
+- **Theme Customization:** Includes blue, yellow, and black color themes for accessibility.
+- **Data Export:** Provides stockpile item data in CSV format.
+- **Accessibility:** Features for adjusting font size and color contrast.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  
+## Technology Stack
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+- **Framework:** [Nuxt.js](https://nuxtjs.org/) (v2)
+- **UI:** [Vue.js](https://vuejs.org/)
+- **Internationalization:** [nuxt-i18n](https://i18n.nuxtjs.org/)
+- **Data Processing:** [Deno](https://deno.land/) for CSV generation
+- **Styling:** PostCSS with CSS variables
 
-## Notice
+## Getting Started
 
-**Don't edit tips.config.js because It is generated automatically.**
+### Prerequisites
 
-## Build Setup
+- Node.js (v14 or later recommended)
+- npm (v6 or later)
+- Deno (for running data scripts)
 
-```bash
-# install dependencies
-$ npm ci
+### Installation & Development
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/code4fukui/tokyobichikunavi.git
+    cd tokyobichikunavi
+    ```
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+2.  **Install dependencies:**
+    ```bash
+    npm ci
+    ```
 
-# generate static project
-$ npm run generate
-```
+3.  **Run the development server:**
+    ```bash
+    # Serve with hot reload at http://localhost:3000
+    npm run dev
+    ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Available Scripts
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the application for production.
+- `npm run start`: Starts the production server (after building
